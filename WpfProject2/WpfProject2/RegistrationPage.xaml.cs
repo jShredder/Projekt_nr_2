@@ -16,13 +16,23 @@ using System.Windows.Shapes;
 namespace WpfProject2
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for RegistrationPage.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class RegistrationPage : Page
     {
-        public MainWindow()
+        public RegistrationPage()
         {
             InitializeComponent();
+        }
+
+        private void registerButton_Click(object sender, RoutedEventArgs e)
+        {
+            Register register = new Register(userName.Text, userSurname.Text, userPassword.Password, confirmedPassword.Password);
+
+            if (register.registerUser())
+            {
+                this.NavigationService.Navigate(new BrowsingPanelPage());
+            }
         }
     }
 }
