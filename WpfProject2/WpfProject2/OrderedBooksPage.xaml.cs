@@ -87,5 +87,15 @@ namespace WpfProject2
             ).ToList();
             orderedMagazinesDatagrid.ItemsSource = orderedMagazines;
         }
+
+        private void orderedMagazinesDatagrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void orderedBooksDatagrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

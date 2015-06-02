@@ -25,7 +25,7 @@
                   Opacity="0.5"
                  BlurRadius="4"/>
                     </TextBlock.Effect>
-            Rejestracja</TextBlock>
+            Registration</TextBlock>
                 <WrapPanel  Margin="0 15 0 15" HorizontalAlignment="Center">
                     <TextBlock FontFamily="Calibri" FontSize="20" Width="150" TextAlignment="Right">Name</TextBlock>
                     <TextBox FontFamily="Calibri" Margin="20 0 0 0" Width="140" MaxLength="10" Name="userName" FontSize="20" FontWeight="Bold"/>
@@ -35,22 +35,14 @@
                     <TextBox FontFamily="Calibri" Margin="20 0 0 0" Width="140" MaxLength="10" Name="userSurname" FontSize="20" FontWeight="Bold"/>
                 </WrapPanel>
                 <WrapPanel Margin="0 15 0 15" HorizontalAlignment="Center">
-                    <TextBlock FontFamily="Calibri" FontSize="20" Width="150" TextAlignment="Right" >Haslo</TextBlock>
-                    <PasswordBox FontFamily="Calibri" FontSize="20" MaxLength="10" FontWeight="Bold" Margin="20 0 0 0" Width="140" Name="userPassword">
-                        <PasswordBox.ToolTip>
-                            Hasło nie może zawierać więcej niż 10 znaków
-                        </PasswordBox.ToolTip>
-                    </PasswordBox>
+                    <TextBlock FontFamily="Calibri" FontSize="20" Width="150" TextAlignment="Right" >Password</TextBlock>
+                    <PasswordBox FontFamily="Calibri" FontSize="20" MaxLength="10" FontWeight="Bold" Margin="20 0 0 0" Width="140" Name="userPassword"/>
                 </WrapPanel>
                 <WrapPanel Margin="0 15 0 15" HorizontalAlignment="Center">
-                    <TextBlock FontFamily="Calibri" FontSize="20" Width="150" TextAlignment="Right" >Powtórz haslo</TextBlock>
-                    <PasswordBox FontFamily="Calibri" MaxLength="10" FontSize="20" FontWeight="Bold" Margin="20 0 0 0" Width="140" Name="confirmedPassword">
-                        <PasswordBox.ToolTip>
-                            Hasło nie może zawierać więcej niż 10 znaków
-                        </PasswordBox.ToolTip>
-                    </PasswordBox>
+                    <TextBlock FontFamily="Calibri" FontSize="20" Width="150" TextAlignment="Right" >Repeat password</TextBlock>
+                    <PasswordBox FontFamily="Calibri" MaxLength="10" FontSize="20" FontWeight="Bold" Margin="20 0 0 0" Width="140" Name="confirmedPassword"/>
                 </WrapPanel>
-                <Button FontFamily="Calibri" Name="registerButton" FontSize="16" Click="registerButton_Click" Margin="130 15 130 15">Zarejestruj się</Button>
+                <Button FontFamily="Calibri" Name="registerButton" FontSize="16" Click="registerButton_Click" Margin="130 15 130 15">Register</Button>
             </StackPanel>
         </Border>
     </Border>

@@ -14,20 +14,20 @@
     </Page.Background>
     <StackPanel HorizontalAlignment="Center" Width="800">
         <Menu>
-            <MenuItem x:Name="zloz_zamowienie" Header="Złóż zamowienie" Click="zloz_zamowienie_Click"/>
-            <MenuItem Header="Pomoc" Click="MenuItem_Click">
-                <MenuItem Header="O programie" x:Name="info"/>
+            <MenuItem x:Name="zloz_zamowienie" Header="Order" Click="zloz_zamowienie_Click"/>
+            <MenuItem Header="Info" Click="MenuItem_Click">
+                <MenuItem Header="About Bookstore Application" x:Name="info"/>
             </MenuItem>
-            <MenuItem Header="Wyloguj" x:Name="logout" Click="logout_Click"/>
+            <MenuItem Header="Sign out" x:Name="logout" Click="logout_Click"/>
         </Menu>
         <StackPanel>
             <WrapPanel Margin="0 30 0 0" HorizontalAlignment="Center">
-                <TextBlock TextWrapping="Wrap" Text="Zamówienie użytkownika: " FontSize="14" FontWeight="Bold" Foreground="#FF161EB8" TextAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Text="Orders placed by: " FontSize="14" FontWeight="Bold" Foreground="#FF161EB8" TextAlignment="Center"/>
                 <TextBlock Name="userNameTextbox" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Foreground="#FF161EB8" TextAlignment="Center"/>
             </WrapPanel>
-            <TextBlock TextWrapping="Wrap" Text="Zamówione książki" FontSize="14" FontWeight="Bold" Foreground="#FF161EB8" TextAlignment="Center" Margin="0 50 0 10"/>
+            <TextBlock TextWrapping="Wrap" Text="Ordered  books" FontSize="14" FontWeight="Bold" Foreground="#FF161EB8" TextAlignment="Center" Margin="0 50 0 10"/>
             <DataGrid x:Name="orderedBooksDatagrid" CanUserAddRows="False" Height="Auto" AutoGenerateColumns="False" EnableRowVirtualization="True" 
-            	RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,0,91,0" HorizontalAlignment="Right" Width="593" RenderTransformOrigin="0.825,4.192">
+            	RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Center" Width="Auto" RenderTransformOrigin="0.825,4.192" MouseDoubleClick="orderedBooksDatagrid_MouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding title1}" Header="Title" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding author1}" Header="Author" Width="Auto"/>
@@ -36,12 +36,11 @@
                     <DataGridTextColumn Binding="{Binding category1}" Header="Category" Width="Auto"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <TextBlock TextWrapping="Wrap" Text="Zamówione czasopisma" FontSize="14" FontWeight="Bold" Foreground="#FF161EB8" TextAlignment="Center" Margin="0 50 0 10"/>
-            <DataGrid x:Name="orderedMagazinesDatagrid" CanUserAddRows="False" Height="Auto" AutoGenerateColumns="False" EnableRowVirtualization="True" 
-        	RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,0,217,0" HorizontalAlignment="Right" Width="289" RenderTransformOrigin="0.825,4.192">
+            <TextBlock TextWrapping="Wrap" Text="Ordered magazines" FontSize="14" FontWeight="Bold" Foreground="#FF161EB8" TextAlignment="Center" Margin="0 50 0 10"/>
+            <DataGrid x:Name="orderedMagazinesDatagrid" CanUserAddRows="False"  Height="Auto" AutoGenerateColumns="False" EnableRowVirtualization="True" 
+        	RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Center" Width="Auto" RenderTransformOrigin="0.825,4.192" MouseDoubleClick="orderedMagazinesDatagrid_MouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding title1}" Header="Title" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding author1}" Header="Author" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding price1}" Header="Price" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding state1}" Header="State" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding category1}" Header="Category" Width="Auto"/>

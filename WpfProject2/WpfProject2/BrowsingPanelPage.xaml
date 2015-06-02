@@ -19,40 +19,51 @@
     </Page.Background>
     <StackPanel HorizontalAlignment="Center" Width="800">
         <Menu>
-            <MenuItem Header="Zobacz zamówienia" Click="zamowienia_click"/>
-            <MenuItem Header="Pomoc" Click="MenuItem_Click">
-                <MenuItem Header="O programie" x:Name="info"/>
+            <MenuItem Header="See your order" Click="zamowienia_click"/>
+            <MenuItem Header="Info" Click="MenuItem_Click">
+                <MenuItem Header="About Bookstore Application" x:Name="info"/>
             </MenuItem>
-            <MenuItem Header="Wyloguj" x:Name="logout" Click="logout_Click"/>
+            <MenuItem Header="Sign out" x:Name="logout" Click="logout_Click"/>
         </Menu>
-        <Grid Loaded="Grid_Loaded">
-            <DataGrid x:Name="dataGrid1" Width="Auto" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding magazinesList2, Source={StaticResource magazinesLV}}" Margin="164,34,187,429">
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" Margin="0 20 0 10" TextWrapping="Wrap" Text="Magazine selecting" FontSize="14" FontWeight="Bold"/>
+            <DataGrid x:Name="dataGrid1" Width="Auto" Margin="184 0 184 0" Height="Auto" CanUserAddRows="False" AutoGenerateColumns="False"
+                      ItemsSource="{Binding magazinesList2, Source={StaticResource magazinesLV}}" ToolTipService.InitialShowDelay="1000"
+                      ToolTipService.ShowDuration="6000">
+                <DataGrid.ToolTip>
+                    Select interesting magazine and click Buy the magazine
+                </DataGrid.ToolTip>
                 <DataGrid.Columns>
-                    <DataGridTextColumn  Header="Title" Binding="{Binding Title, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Issue" Binding="{Binding Issue, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="State" Binding="{Binding State, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Category" Binding="{Binding Category, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Price" Binding="{Binding Price, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Amount" Binding="{Binding Amount, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Availability" Binding="{Binding Availability, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Title" Binding="{Binding Title, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Issue" Binding="{Binding Issue, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="State" Binding="{Binding State, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Category" Binding="{Binding Category, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Price" Binding="{Binding Price, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Amount" Binding="{Binding Amount, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Availability" Binding="{Binding Availability, Mode=TwoWay}" Width="Auto"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="dataGrid2" Width="Auto" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding booksList2, Source={StaticResource booksLV}}" Margin="75,249,68,103">
+            <Button x:Name="zamow_magazyn" Content="Buy the magazine" HorizontalAlignment="Center" Margin="0 10 0 20" VerticalAlignment="Top" Width="107" Click="zamow_magazyn_Click"/>
+
+            <TextBlock HorizontalAlignment="Center" Margin="0 20 0 10" TextWrapping="Wrap" Text="Books selecting" FontSize="14" FontWeight="Bold"/>
+            <DataGrid x:Name="dataGrid2" Width="Auto" Margin="20 0 20 0" Height="Auto" CanUserAddRows="False" AutoGenerateColumns="False"
+                      ItemsSource="{Binding booksList2, Source={StaticResource booksLV}}" ToolTipService.InitialShowDelay="1000"
+                      ToolTipService.ShowDuration="6000">
+                <DataGrid.ToolTip>
+                    Select interesting book and click Buy the book
+                </DataGrid.ToolTip>
                 <DataGrid.Columns>
-                    <DataGridTextColumn  Header="Title" Binding="{Binding Title, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Author" Binding="{Binding Author, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Year" Binding="{Binding Year, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Price" Binding="{Binding Price, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Amount" Binding="{Binding Amount, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Availability" Binding="{Binding Availability, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="State" Binding="{Binding State, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Category" Binding="{Binding Category, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Title" Binding="{Binding Title, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Author" Binding="{Binding Author, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Year" Binding="{Binding Year, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Price" Binding="{Binding Price, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Amount" Binding="{Binding Amount, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Availability" Binding="{Binding Availability, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="State" Binding="{Binding State, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Category" Binding="{Binding Category, Mode=TwoWay}" Width="Auto"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <TextBlock HorizontalAlignment="Left" Margin="154,10,0,0" TextWrapping="Wrap" Text="Wybór magazynu (zaznacz dany egzemplarz i kliknij &quot;Zamów magazyn&quot;)" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-            <TextBlock HorizontalAlignment="Left" Margin="181,225,0,0" TextWrapping="Wrap" Text="Wybór książki (zaznacz dany egzemplarz i kliknij &quot;Zamów książkę&quot;)" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-            <Button x:Name="zamow_magazyn" Content="Zamów magazyn" HorizontalAlignment="Left" Margin="341,161,0,0" VerticalAlignment="Top" Width="107" Click="zamow_magazyn_Click"/>
-            <Button x:Name="zamow_ksiazke" Content="Zamów książkę" HorizontalAlignment="Left" Margin="351,487,0,0" VerticalAlignment="Top" Width="97" Click="zamow_ksiazke_Click"/>
-        </Grid>
+            <Button x:Name="zamow_ksiazke" Content="Buy the book" HorizontalAlignment="Center" Margin="0 10 0 0" Width="97" Click="zamow_ksiazke_Click"/>
+        </StackPanel>
     </StackPanel>
 </Page>

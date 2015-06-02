@@ -20,14 +20,14 @@
         </LinearGradientBrush>
     </Page.Background>
     <DockPanel>
-        <Button DockPanel.Dock="Top" HorizontalAlignment="Right" Padding="3" FontSize="16" Margin="0 40 40 0" FontFamily="Calibri" Name="registerButton" Click="registerButton_Click">Zarejestruj się</Button>
+        <Button DockPanel.Dock="Top" HorizontalAlignment="Right" Padding="3" FontSize="16" Margin="0 40 40 0" FontFamily="Calibri" Name="registerButton" Click="registerButton_Click">Registration</Button>
         <Border x:Name="TopAndLeft" BorderThickness="3,3,0,0" BorderBrush="{x:Static SystemColors.ControlLightBrush}" Width="350" Height="400">
             <Border x:Name="BottomAndRight" BorderThickness="0,0,3,3" BorderBrush="{x:Static SystemColors.ControlDarkBrush}">
                 <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 40">
                     <TextBlock HorizontalAlignment="Center" FontFamily="Comic Sans MS" FontSize="36" FontWeight="Bold" Margin="0 15 0 50">
                         <TextBlock.Effect>
                             <DropShadowEffect ShadowDepth="4" Direction="330" Color="Black" Opacity="0.5" BlurRadius="4"/>
-                        </TextBlock.Effect>Panel logowania</TextBlock>
+                        </TextBlock.Effect>Login</TextBlock>
                     <TextBlock FontFamily="Calibri" FontSize="14" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Center" Name="warning1" Foreground="DarkRed" Visibility="Hidden">
                 Pola loginu i hasła muszą być uzupełnione
                     </TextBlock>
@@ -43,7 +43,7 @@
                         <TextBlock FontFamily="Calibri" FontSize="20" >Haslo</TextBlock>
                         <PasswordBox FontFamily="Calibri" FontSize="20" FontWeight="Bold" Margin="30 0 0 0" Width="140" Name="userPassword"/>
                     </WrapPanel>
-                    <Button FontFamily="Calibri" Name="logButton" FontSize="16" Click="logButton_Click" Margin="130 15 130 15">Zaloguj</Button>
+                    <Button FontFamily="Calibri" Name="logButton" FontSize="16" Click="logButton_Click" Margin="130 15 130 15">Sign in</Button>
                 </StackPanel>
             </Border>
         </Border>
