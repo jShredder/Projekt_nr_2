@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
+using System.Net;
+using System.Net.Mail;
 
 namespace WpfProject2
 {
@@ -28,7 +30,6 @@ namespace WpfProject2
         {
             InitializeComponent();
             userId = id;
-            textbox1.Text = "userId = " + userId;
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -78,6 +79,7 @@ namespace WpfProject2
 
                 context.Magazine.Add(newMagazine);
                 context.SaveChanges();
+                sendOrderMagazine();
             }
             else
             {
@@ -85,23 +87,75 @@ namespace WpfProject2
             }
         }
 
+        private void sendOrderMagazine()
+        {
+            Magazine1 selectedMagazine = dataGrid1.SelectedItem as Magazine1;
+            var activeUser = (from l in context.Logowanie where l.Id == userId select l).FirstOrDefault();
+
+            try
+            {
+                MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+
+                message.From = new MailAddress("q123aaaaz123aaaqqq147@gmail.com");
+                message.To.Add(new MailAddress("q123aaaaz123aaaqqq147@gmail.com"));
+                message.Subject = "Customer order - Magazine";
+                message.Body = "Client: " + activeUser.Login + " " + activeUser.Surname + "\n Order magazine: " + "\nTitle: "
+                + selectedMagazine.Title + "Issue: " + selectedMagazine.Issue + "Price: " + selectedMagazine.Price;
+
+                smtp.Port = 587;
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("q123aaaaz123aaaqqq147@gmail.com", "asd123123qwe");
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Send(message);
+                MessageBox.Show("Successfully sent message");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("err: " + ex.Message);
+            }
+        }
+
+        private void sendOrderBook()
+        {
+            Books1 selectedMagazine = dataGrid2.SelectedItem as Books1;
+            var activeUser = (from l in context.Logowanie where l.Id == userId select l).FirstOrDefault();
+
+            try
+            {
+                MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+
+                message.From = new MailAddress("q123aaaaz123aaaqqq147@gmail.com");
+                message.To.Add(new MailAddress("q123aaaaz123aaaqqq147@gmail.com"));
+                message.Subject = "Customer order - Book";
+                message.Body = "Client: " + activeUser.Login + " " + activeUser.Surname + "\n Order magazine: " + "\nTitle: "
+                + selectedMagazine.Title + "Price: " + selectedMagazine.Availability;
+
+                smtp.Port = 587;
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("q123aaaaz123aaaqqq147@gmail.com", "asd123123qwe");
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Send(message);
+                MessageBox.Show("Successfully sent message");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("err: " + ex.Message);
+            }
+        }
+
         private void zamow_ksiazke_Click(object sender, RoutedEventArgs e)
         {
-            if(dataGrid2.SelectedItems.Count > 0){
+            if (dataGrid2.SelectedItems.Count > 0)
+            {
                 Books1 selectedBook = dataGrid2.SelectedItem as Books1;
-                /*
-                
-                textbox1.Text = "title: " + selectedBook.Title +"\n";
-                textbox1.Text += "author: " + selectedBook.Author + "\n";
-                textbox1.Text += "price: " + selectedBook.Price + "\n";
-                textbox1.Text += "state: " + selectedBook.State + "\n";
-                textbox1.Text += "category: " + selectedBook.Category + "\n";
-                textbox1.Text += "year: " + selectedBook.Year + "\n";
-                textbox1.Text += "Availability: " + selectedBook.Availability + "\n";
-                textbox1.Text += "amount: " + selectedBook.Amount + "\n";
-                */
+               
                 Book newBook = new Book();
-                
 
                 newBook.LogowanieId = userId;
                 newBook.Title = selectedBook.Title;
@@ -115,18 +169,23 @@ namespace WpfProject2
                 newBook.Price = decimal.Parse(selectedBook.Availability);
 
                 newBook.Amount = short.Parse(selectedBook.State);
-                
-                if(selectedBook.Category.Equals("available")){
+
+                if (selectedBook.Category.Equals("available"))
+                {
                     newBook.Availability = true;
-                }else{
+                }
+                else
+                {
                     newBook.Availability = false;
                 }
 
                 context.Book.Add(newBook);
                 context.SaveChanges();
-                textbox1.Text += "przesłano\n";
-            }else{
-                 MessageBox.Show("Nie wybrano rekordu");
+                sendOrderBook();
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano rekordu");
             }
         }
     }
