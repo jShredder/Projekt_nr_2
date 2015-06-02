@@ -20,8 +20,33 @@
             </MenuItem>
             <MenuItem Header="Wyloguj" x:Name="logout" Click="logout_Click"/>
         </Menu>
-        <Grid>
-
-        </Grid>
+        <StackPanel>
+            <WrapPanel Margin="0 30 0 0" HorizontalAlignment="Center">
+                <TextBlock TextWrapping="Wrap" Text="Zamówienie użytkownika: " FontSize="14" FontWeight="Bold" Foreground="#FF161EB8" TextAlignment="Center"/>
+                <TextBlock Name="userNameTextbox" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Foreground="#FF161EB8" TextAlignment="Center"/>
+            </WrapPanel>
+            <TextBlock TextWrapping="Wrap" Text="Zamówione książki" FontSize="14" FontWeight="Bold" Foreground="#FF161EB8" TextAlignment="Center" Margin="0 50 0 10"/>
+            <DataGrid x:Name="orderedBooksDatagrid" CanUserAddRows="False" Height="Auto" AutoGenerateColumns="False" EnableRowVirtualization="True" 
+            	RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,0,91,0" HorizontalAlignment="Right" Width="593" RenderTransformOrigin="0.825,4.192">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding title1}" Header="Title" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding author1}" Header="Author" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding price1}" Header="Price" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding state1}" Header="State" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding category1}" Header="Category" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock TextWrapping="Wrap" Text="Zamówione czasopisma" FontSize="14" FontWeight="Bold" Foreground="#FF161EB8" TextAlignment="Center" Margin="0 50 0 10"/>
+            <DataGrid x:Name="orderedMagazinesDatagrid" CanUserAddRows="False" Height="Auto" AutoGenerateColumns="False" EnableRowVirtualization="True" 
+        	RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,0,217,0" HorizontalAlignment="Right" Width="289" RenderTransformOrigin="0.825,4.192">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding title1}" Header="Title" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding author1}" Header="Author" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding price1}" Header="Price" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding state1}" Header="State" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding category1}" Header="Category" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </StackPanel>
 </Page>

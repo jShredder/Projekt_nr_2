@@ -20,12 +20,19 @@ namespace WpfProject2
     /// </summary>
     public partial class OrderedBooksPage : Page
     {
+        LibraryDBEntities context = new LibraryDBEntities();
+
         private int userId;
 
         public OrderedBooksPage(int id)
         {
             InitializeComponent();
             userId = id;
+            showOrderedBooks();
+            showOrderedMagazines();
+
+            var activeUser = (from l in context.Logowanie where l.Id == userId select l).FirstOrDefault();
+            userNameTextbox.Text = activeUser.Login + " " + activeUser.Surname;
         }
 
         private void logout_Click(object sender, RoutedEventArgs e)
@@ -41,6 +48,44 @@ namespace WpfProject2
         private void zloz_zamowienie_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new BrowsingPanelPage(userId));
+        }
+
+        private void showOrderedBooks()
+        {
+
+            var orderedBooks = (from b in context.Book
+                                join s in context.State on b.StateId equals s.Id
+                                join c in context.Category on b.CategoryId equals c.Id
+                                where b.LogowanieId == userId
+                                select new
+                                {
+                                    title1 = b.Title,
+                                    author1 = b.Author,
+                                    price1 = b.Price,
+                                    state1 = s.StateName,
+                                    category1 = c.CategoryName
+                                }
+            ).ToList();
+
+            orderedBooksDatagrid.ItemsSource = orderedBooks;
+        }
+
+        private void showOrderedMagazines()
+        {
+            var orderedMagazines = (from m in context.Magazine
+                                join s in context.State on m.StateId equals s.Id
+                                join c in context.Category on m.CategoryId equals c.Id
+                                where m.LogowanieId == userId
+                                select new
+                                {
+                                    title1 = m.Title,
+                                    issue1 = m.Issue,
+                                    price1 = m.Price,
+                                    state1 = s.StateName,
+                                    category1 = c.CategoryName
+                                }
+            ).ToList();
+            orderedMagazinesDatagrid.ItemsSource = orderedMagazines;
         }
     }
 }
