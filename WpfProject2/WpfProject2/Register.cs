@@ -53,7 +53,7 @@ namespace WpfProject2
             }
         }
 
-        public bool registerUser()
+        public int registerUser()
         {
             if (loginVeryfication(newUser.Login))
             {
@@ -66,18 +66,20 @@ namespace WpfProject2
                     context.Logowanie.Add(newUser);
                     context.SaveChanges();
 
-                    return true;
+                    var activeUser = (from user in context.Logowanie where user.Login == newUser.Login where user.Surname == newUser.Surname select user).FirstOrDefault();
+
+                    return activeUser.Id;
                 }
                 else
                 {
                     MessageBox.Show("Wprowadzone hasła nie zgadzają się!");
-                    return false;
+                    return -1;
                 }
             }
             else
             {
                 MessageBox.Show("Użytkownik o podanym nicku już istnieje!");
-                return false;
+                return -1;
             }
         }
     }

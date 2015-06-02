@@ -27,11 +27,12 @@ namespace WpfProject2
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
+            int result;
             Register register = new Register(userName.Text, userSurname.Text, userPassword.Password, confirmedPassword.Password);
 
-            if (register.registerUser())
+            if ((result = register.registerUser()) != -1)
             {
-                this.NavigationService.Navigate(new BrowsingPanelPage());
+                this.NavigationService.Navigate(new BrowsingPanelPage(result));
             }
         }
     }

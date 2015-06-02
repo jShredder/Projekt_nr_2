@@ -29,7 +29,7 @@ namespace WpfProject2
 
         override public bool loginVeryfication(string login)
         {
-            var activeUser = (from user in context.Logowanie where newUser.Login == user.Login select user).FirstOrDefault();
+            var activeUser = (from user in context.Logowanie where newUser.Login == user.Login where newUser.Surname == user.Surname select user).FirstOrDefault();
 
             if (newUser.Login.Equals("") || newUser.Surname.Equals(""))
             {

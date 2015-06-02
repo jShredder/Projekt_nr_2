@@ -20,16 +20,19 @@ using System.Xml;
 
 namespace WpfProject2
 {
-    class BooksCollection
+    class BooksCollection : XMLReading
     {
         Collection<Books1> booksList1 = new Collection<Books1>();
         public Collection<Books1> booksList2 { get { return booksList1; } }
 
         public BooksCollection()
         {
-            XmlTextReader reader = new XmlTextReader("http://ojp.cba.pl/Books.xml");
-            bool isTitle = false, isAuthor = false, isYear=false, isPrice = false, isAmount = false, isAvailability = false, isState = false, isCategory = false;
-            string title = null, author = null, year = null, state = null, category = null, availability = null, amount = null, price = null;
+            readXMLFile("http://ojp.cba.pl/Books1.xml");
+        }
+
+        override public void readXMLFile(string URLAdress)
+        {
+            XmlTextReader reader = new XmlTextReader(URLAdress);
 
             while (reader.Read())
             {
@@ -41,35 +44,35 @@ namespace WpfProject2
                         {
                             case "tltle":
                                 isTitle = true;
-                                isAuthor = false; isYear=false; isPrice = false; isAmount = false; isAvailability = false; isState = false; isCategory = false;
+                                isAuthor = false; isYear = false; isPrice = false; isAmount = false; isAvailability = false; isState = false; isCategory = false;
                                 break;
                             case "author":
                                 isAuthor = true;
-                                isTitle = false; isYear=false; isPrice = false; isAmount = false; isAvailability = false; isState = false; isCategory = false;
+                                isTitle = false; isYear = false; isPrice = false; isAmount = false; isAvailability = false; isState = false; isCategory = false;
                                 break;
                             case "year":
                                 isYear = true;
-                                isTitle = false; isAuthor=false; isPrice = false; isAmount = false; isAvailability = false; isState = false; isCategory = false;
+                                isTitle = false; isAuthor = false; isPrice = false; isAmount = false; isAvailability = false; isState = false; isCategory = false;
                                 break;
                             case "price":
                                 isPrice = true;
-                                isTitle = false; isAuthor = false; isYear=false; isAmount = false; isAvailability = false; isState = false; isCategory = false;
+                                isTitle = false; isAuthor = false; isYear = false; isAmount = false; isAvailability = false; isState = false; isCategory = false;
                                 break;
                             case "amount":
                                 isAmount = true;
-                                isTitle = false; isAuthor = false; isYear=false; isPrice = false; isAvailability = false; isState = false; isCategory = false;
+                                isTitle = false; isAuthor = false; isYear = false; isPrice = false; isAvailability = false; isState = false; isCategory = false;
                                 break;
                             case "availability":
                                 isAvailability = true;
-                                isTitle = false; isAuthor = false; isYear=false; isPrice = false; isAmount = false; isState = false; isCategory = false;
+                                isTitle = false; isAuthor = false; isYear = false; isPrice = false; isAmount = false; isState = false; isCategory = false;
                                 break;
                             case "state":
                                 isState = true;
-                                isTitle = false; isAuthor = false; isYear=false; isPrice = false; isAmount = false; isAvailability = false; isCategory = false;
+                                isTitle = false; isAuthor = false; isYear = false; isPrice = false; isAmount = false; isAvailability = false; isCategory = false;
                                 break;
                             case "category":
                                 isCategory = true;
-                                isTitle = false; isAuthor = false; isYear=false; isPrice = false; isAmount = false; isAvailability = false; isState = false;
+                                isTitle = false; isAuthor = false; isYear = false; isPrice = false; isAmount = false; isAvailability = false; isState = false;
                                 break;
                         }
                         while (reader.MoveToNextAttribute()) ; // Read the attributes.

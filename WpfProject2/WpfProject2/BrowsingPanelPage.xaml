@@ -19,7 +19,7 @@
     </Page.Background>
     <StackPanel HorizontalAlignment="Center" Width="800">
         <Menu>
-            <MenuItem Header="Zobacz zamówienia"/>
+            <MenuItem Header="Zobacz zamówienia" Click="zamowienia_click"/>
             <MenuItem Header="Pomoc" Click="MenuItem_Click">
                 <MenuItem Header="O programie" x:Name="info"/>
             </MenuItem>
@@ -40,19 +40,20 @@
             <DataGrid x:Name="dataGrid2" Width="Auto" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding booksList2, Source={StaticResource booksLV}}" Margin="75,249,68,103">
                 <DataGrid.Columns>
                     <DataGridTextColumn  Header="Title" Binding="{Binding Title, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Issue" Binding="{Binding Author, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Issue" Binding="{Binding Year, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="State" Binding="{Binding Price, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Category" Binding="{Binding Amount, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Price" Binding="{Binding Availability, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Amount" Binding="{Binding State, Mode=TwoWay}"/>
-                    <DataGridTextColumn  Header="Availability" Binding="{Binding Category, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Author" Binding="{Binding Author, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Year" Binding="{Binding Year, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Price" Binding="{Binding Price, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Amount" Binding="{Binding Amount, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Availability" Binding="{Binding Availability, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="State" Binding="{Binding State, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Category" Binding="{Binding Category, Mode=TwoWay}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <TextBlock HorizontalAlignment="Left" Margin="154,10,0,0" TextWrapping="Wrap" Text="Wybór magazynu (zaznacz dany egzemplarz i kliknij &quot;Zamów magazyn&quot;)" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
             <TextBlock HorizontalAlignment="Left" Margin="181,225,0,0" TextWrapping="Wrap" Text="Wybór książki (zaznacz dany egzemplarz i kliknij &quot;Zamów książkę&quot;)" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-            <Button Content="Zamów magazyn" HorizontalAlignment="Left" Margin="341,161,0,0" VerticalAlignment="Top" Width="107"/>
-            <Button Content="Zamów książkę" HorizontalAlignment="Left" Margin="351,487,0,0" VerticalAlignment="Top" Width="97"/>
+            <Button x:Name="zamow_magazyn" Content="Zamów magazyn" HorizontalAlignment="Left" Margin="341,161,0,0" VerticalAlignment="Top" Width="107" Click="zamow_magazyn_Click"/>
+            <Button x:Name="zamow_ksiazke" Content="Zamów książkę" HorizontalAlignment="Left" Margin="351,487,0,0" VerticalAlignment="Top" Width="97" Click="zamow_ksiazke_Click"/>
+            <TextBox x:Name="textbox1" HorizontalAlignment="Left" Height="198" Margin="628,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
         </Grid>
     </StackPanel>
 </Page>

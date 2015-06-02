@@ -104,7 +104,6 @@
       <DependentUpon>Bookstore.tt</DependentUpon>
     </Compile>
     <Compile Include="IDatabaseCommunication.cs" />
-    <Compile Include="Letters.cs" />
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -128,6 +127,7 @@
       <DependentUpon>Bookstore.tt</DependentUpon>
     </Compile>
     <Compile Include="Veryfication.cs" />
+    <Compile Include="XMLReading.cs" />
     <Page Include="BrowsingPanelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

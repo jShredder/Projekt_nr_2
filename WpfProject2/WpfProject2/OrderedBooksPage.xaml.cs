@@ -20,9 +20,27 @@ namespace WpfProject2
     /// </summary>
     public partial class OrderedBooksPage : Page
     {
-        public OrderedBooksPage()
+        private int userId;
+
+        public OrderedBooksPage(int id)
         {
             InitializeComponent();
+            userId = id;
+        }
+
+        private void logout_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new LoginPage());
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Bookstore Online \nCreated by Jan Szreder");
+        }
+
+        private void zloz_zamowienie_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new BrowsingPanelPage(userId));
         }
     }
 }

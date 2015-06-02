@@ -27,11 +27,13 @@ namespace WpfProject2
 
         private void logButton_Click(object sender, RoutedEventArgs e)
         {
+            LibraryDBEntities context = new LibraryDBEntities();
             SignIn signIn = new SignIn(userName.Text, userSurname.Text, userPassword.Password);
 
             if (signIn.loginUser())
             {
-                this.NavigationService.Navigate(new BrowsingPanelPage());
+                var activeUser = (from user in context.Logowanie where user.Login == userName.Text where user.Surname == userSurname.Text select user).FirstOrDefault();
+                this.NavigationService.Navigate(new BrowsingPanelPage(activeUser.Id));
             }
         }
 
