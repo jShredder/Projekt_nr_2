@@ -80,6 +80,7 @@
     <Compile Include="Book.cs">
       <DependentUpon>Bookstore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Books1.cs" />
     <Compile Include="BooksCollection.cs" />
     <Compile Include="Bookstore.Context.cs">
       <AutoGen>True</AutoGen>
@@ -103,7 +104,6 @@
       <DependentUpon>Bookstore.tt</DependentUpon>
     </Compile>
     <Compile Include="IDatabaseCommunication.cs" />
-    <Compile Include="IXMLReading.cs" />
     <Compile Include="Letters.cs" />
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -114,6 +114,8 @@
     <Compile Include="Magazine.cs">
       <DependentUpon>Bookstore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Magazine1.cs" />
+    <Compile Include="MagazinesCollection.cs" />
     <Compile Include="OrderedBooksPage.xaml.cs">
       <DependentUpon>OrderedBooksPage.xaml</DependentUpon>
     </Compile>

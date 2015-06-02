@@ -3,20 +3,56 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:WpfProject2"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800" ShowsNavigationUI="false"
 	Title="BrowsingPanelPage" Foreground="#FF162FA0">
-    <Page.Effect>
-        <BlurEffect/>
-    </Page.Effect>
+    <Page.Resources>
+        <vm:MagazinesCollection x:Key="magazinesLV"/>
+        <vm:BooksCollection x:Key="booksLV"/>
+    </Page.Resources>
     <Page.Background>
         <LinearGradientBrush EndPoint="0.504,1.5" StartPoint="0.504,0.03">
             <GradientStop Color="#f0f9ff" Offset="0"/>
             <GradientStop Color="#b2e1ff" Offset="0.567"/>
         </LinearGradientBrush>
     </Page.Background>
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="217,227,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="36" >Browsing Panel Page</TextBlock>
-
-    </Grid>
+    <StackPanel HorizontalAlignment="Center" Width="800">
+        <Menu>
+            <MenuItem Header="Zobacz zamówienia"/>
+            <MenuItem Header="Pomoc" Click="MenuItem_Click">
+                <MenuItem Header="O programie" x:Name="info"/>
+            </MenuItem>
+            <MenuItem Header="Wyloguj" x:Name="logout" Click="logout_Click"/>
+        </Menu>
+        <Grid Loaded="Grid_Loaded">
+            <DataGrid x:Name="dataGrid1" Width="Auto" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding magazinesList2, Source={StaticResource magazinesLV}}" Margin="164,34,187,429">
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Header="Title" Binding="{Binding Title, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Issue" Binding="{Binding Issue, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="State" Binding="{Binding State, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Category" Binding="{Binding Category, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Price" Binding="{Binding Price, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Amount" Binding="{Binding Amount, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Availability" Binding="{Binding Availability, Mode=TwoWay}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid x:Name="dataGrid2" Width="Auto" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding booksList2, Source={StaticResource booksLV}}" Margin="75,249,68,103">
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Header="Title" Binding="{Binding Title, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Issue" Binding="{Binding Author, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Issue" Binding="{Binding Year, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="State" Binding="{Binding Price, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Category" Binding="{Binding Amount, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Price" Binding="{Binding Availability, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Amount" Binding="{Binding State, Mode=TwoWay}"/>
+                    <DataGridTextColumn  Header="Availability" Binding="{Binding Category, Mode=TwoWay}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock HorizontalAlignment="Left" Margin="154,10,0,0" TextWrapping="Wrap" Text="Wybór magazynu (zaznacz dany egzemplarz i kliknij &quot;Zamów magazyn&quot;)" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+            <TextBlock HorizontalAlignment="Left" Margin="181,225,0,0" TextWrapping="Wrap" Text="Wybór książki (zaznacz dany egzemplarz i kliknij &quot;Zamów książkę&quot;)" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+            <Button Content="Zamów magazyn" HorizontalAlignment="Left" Margin="341,161,0,0" VerticalAlignment="Top" Width="107"/>
+            <Button Content="Zamów książkę" HorizontalAlignment="Left" Margin="351,487,0,0" VerticalAlignment="Top" Width="97"/>
+        </Grid>
+    </StackPanel>
 </Page>
