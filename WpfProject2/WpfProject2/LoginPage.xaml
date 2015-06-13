@@ -40,8 +40,8 @@
                         <TextBox FontFamily="Calibri" Margin="5 0 0 0" Width="140" Name="userSurname" FontSize="20" FontWeight="Bold"/>
                     </WrapPanel>
                     <WrapPanel Margin="0 15 0 15" HorizontalAlignment="Center">
-                        <TextBlock FontFamily="Calibri" FontSize="20" >Haslo</TextBlock>
-                        <PasswordBox FontFamily="Calibri" FontSize="20" FontWeight="Bold" Margin="30 0 0 0" Width="140" Name="userPassword"/>
+                        <TextBlock FontFamily="Calibri" FontSize="20" >Password</TextBlock>
+                        <PasswordBox FontFamily="Calibri" FontSize="20" FontWeight="Bold" Margin="5 0 0 0" Width="140" Name="userPassword"/>
                     </WrapPanel>
                     <Button FontFamily="Calibri" Name="logButton" FontSize="16" Click="logButton_Click" Margin="130 15 130 15">Sign in</Button>
                 </StackPanel>

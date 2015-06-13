@@ -63,10 +63,44 @@ namespace WpfProject2
                 newMagazine.Title = selectedMagazine.Title;
                 newMagazine.Issue = selectedMagazine.Issue;
                 var catId = context.Category.Where(cat => cat.CategoryName.Equals(selectedMagazine.Category)).FirstOrDefault();
+
+                if (catId == null)
+                {
+                    Category category = new Category();
+                    category.CategoryName = "programing";
+                    context.Category.Add(category);
+                    context.SaveChanges();
+                    category.CategoryName = "design pattern";
+                    context.Category.Add(category);
+                    context.SaveChanges();
+                    category.CategoryName = "web-programing";
+                    context.Category.Add(category);
+                    context.SaveChanges();
+                    category.CategoryName = "mobile-programing";
+                    context.Category.Add(category);
+                    context.SaveChanges();
+
+                    catId = context.Category.Where(cat => cat.CategoryName.Equals(selectedMagazine.Category)).FirstOrDefault();
+                }
+
                 newMagazine.CategoryId = catId.Id;
                 newMagazine.Price = decimal.Parse(selectedMagazine.Price);
                 var stId = context.State.Where(s => s.StateName.Equals(selectedMagazine.State)).FirstOrDefault();
-                newMagazine.StateId = stId.Id;
+
+            /*    if (stId == null)
+                {
+                    State state = new State();
+                    state.StateName = "new";
+                    context.State.Add(state);
+                    context.SaveChanges();
+                    state.StateName = "used";
+                    context.State.Add(state);
+                    context.SaveChanges();
+
+                    stId = context.State.Where(s => s.StateName.Equals(selectedMagazine.State)).FirstOrDefault();
+                }*/
+
+                newMagazine.StateId = checkStateTable(stId, selectedMagazine);
                 newMagazine.Amount = short.Parse(selectedMagazine.Amount);
                 if (selectedMagazine.Availability.Equals("available"))
                 {
@@ -85,6 +119,33 @@ namespace WpfProject2
             {
                 MessageBox.Show("Nie wybrano rekordu");
             }
+        }
+
+        private int checkStateTable(State state1, Object selected)
+        {
+            if (state1 == null)
+            {
+                State state = new State();
+                state.StateName = "new";
+                context.State.Add(state);
+                context.SaveChanges();
+                state.StateName = "used";
+                context.State.Add(state);
+                context.SaveChanges();
+            }
+
+            int stId;
+
+            if (selected is Magazine1)
+            {
+                stId = context.State.Where(s => s.StateName.Equals(((Magazine1)selected).State)).FirstOrDefault().Id;
+            }
+            else
+            {
+                stId = context.State.Where(s => s.StateName.Equals(((Books1)selected).Price)).FirstOrDefault().Id;
+            }
+
+            return stId;
         }
 
         private void sendOrderMagazine()
@@ -162,9 +223,43 @@ namespace WpfProject2
                 newBook.Author = selectedBook.Author;
                 newBook.Year = int.Parse(selectedBook.Year);
                 var catId = context.Category.Where(cat => cat.CategoryName.Equals(selectedBook.Amount)).FirstOrDefault();
+
+                if (catId == null)
+                {
+                    Category category = new Category();
+                    category.CategoryName = "programing";
+                    context.Category.Add(category);
+                    context.SaveChanges();
+                    category.CategoryName = "design pattern";
+                    context.Category.Add(category);
+                    context.SaveChanges();
+                    category.CategoryName = "web-programing";
+                    context.Category.Add(category);
+                    context.SaveChanges();
+                    category.CategoryName = "mobile-programing";
+                    context.Category.Add(category);
+                    context.SaveChanges();
+
+                    catId = context.Category.Where(cat => cat.CategoryName.Equals(selectedBook.Amount)).FirstOrDefault();
+                }
+
                 newBook.CategoryId = catId.Id;
                 var stId = context.State.Where(s => s.StateName.Equals(selectedBook.Price)).FirstOrDefault();
-                newBook.StateId = stId.Id;
+
+             /*   if (stId == null)
+                {
+                    State state = new State();
+                    state.StateName = "new";
+                    context.State.Add(state);
+                    context.SaveChanges();
+                    state.StateName = "used";
+                    context.State.Add(state);
+                    context.SaveChanges();
+
+                    stId = context.State.Where(s => s.StateName.Equals(selectedBook.Price)).FirstOrDefault();
+                }*/
+
+                newBook.StateId = checkStateTable(stId, selectedBook);
 
                 newBook.Price = decimal.Parse(selectedBook.Availability);
 

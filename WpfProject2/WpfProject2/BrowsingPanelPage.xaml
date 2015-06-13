@@ -56,11 +56,11 @@
                     <DataGridTextColumn  Header="Title" Binding="{Binding Title, Mode=TwoWay}" Width="Auto"/>
                     <DataGridTextColumn  Header="Author" Binding="{Binding Author, Mode=TwoWay}" Width="Auto"/>
                     <DataGridTextColumn  Header="Year" Binding="{Binding Year, Mode=TwoWay}" Width="Auto"/>
-                    <DataGridTextColumn  Header="Price" Binding="{Binding Price, Mode=TwoWay}" Width="Auto"/>
-                    <DataGridTextColumn  Header="Amount" Binding="{Binding Amount, Mode=TwoWay}" Width="Auto"/>
-                    <DataGridTextColumn  Header="Availability" Binding="{Binding Availability, Mode=TwoWay}" Width="Auto"/>
-                    <DataGridTextColumn  Header="State" Binding="{Binding State, Mode=TwoWay}" Width="Auto"/>
-                    <DataGridTextColumn  Header="Category" Binding="{Binding Category, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="State" Binding="{Binding Price, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Category" Binding="{Binding Amount, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Price" Binding="{Binding Availability, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Amount" Binding="{Binding State, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn  Header="Availability" Binding="{Binding Category, Mode=TwoWay}" Width="Auto"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="zamow_ksiazke" Content="Buy the book" HorizontalAlignment="Center" Margin="0 10 0 0" Width="97" Click="zamow_ksiazke_Click"/>
